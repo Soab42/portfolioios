@@ -64,9 +64,9 @@ const StatusBar = () => {
         <div className="wifi">
           <span role="img" aria-label="wifi">
             {wifiStatus === "Connected" ? (
-              <img src="/public/wifi-logo-svgrepo-com.svg" alt="wifi" />
+              <img src="/wifi-logo-svgrepo-com.svg" alt="wifi" />
             ) : (
-              <img src="/public/wifi-svgrepo-com.svg" alt="wifi" />
+              <img src="/wifi-svgrepo-com.svg" alt="wifi" />
             )}
             {wifiStatus}
           </span>
@@ -74,9 +74,9 @@ const StatusBar = () => {
         <div className="battery">
           <span role="img" aria-label="battery">
             {isCharging ? (
-              <img src="/public/charging-battery-svgrepo-com.svg" alt="wifi" />
+              <img src="/charging-battery-svgrepo-com.svg" alt="wifi" />
             ) : (
-              <img src="/public/battery-full-svgrepo-com (1).svg" alt="wifi" />
+              <img src="/battery-full-svgrepo-com (1).svg" alt="wifi" />
             )}
           </span>{" "}
           {batteryLevel}%

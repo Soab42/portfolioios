@@ -1,11 +1,10 @@
 import { useState } from "react";
-import ImageSlider from "../ImageSlider";
 const iconList = [
-  "Sequoia dock Icons/Finder.png",
-  "Sequoia dock Icons/Chrome.png",
-  "Sequoia dock Icons/Slack.png",
-  "Sequoia dock Icons/VSCode.png",
-  "Sequoia dock Icons/Settings.png",
+  "/SequoiadockIcons/Finder.png",
+  "/SequoiadockIcons/Chrome.png",
+  "/SequoiadockIcons/Slack.png",
+  "/SequoiadockIcons/VSCode.png",
+  "/SequoiadockIcons/Settings.png",
 ];
 const MacDoc = ({ setIsSetting, isSetting }) => {
   const [hovered, setHovered] = useState(null);
@@ -49,7 +48,7 @@ const MacDoc = ({ setIsSetting, isSetting }) => {
           }}
         >
           <img
-            src={`/public/${iconList[index]}`}
+            src={`${iconList[index]}`}
             alt=""
             // style={{
             //   transform: `translateY(-${
