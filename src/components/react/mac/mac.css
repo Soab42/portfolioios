@@ -1,0 +1,240 @@
+@font-face {
+  font-family: "sfpro"; /*a name to be used later*/
+  src: url("../../../../public/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF"); /*URL to font*/
+}
+/* cursor image */
+body {
+  cursor: url("/public/a0d5e859e5f2b01dbbf81dfc38a3a92f.png") 16 16, auto;
+}
+.mac-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* position: relative; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.mac-img img {
+  width: 100%;
+  height: 100vh;
+  /* height: 100%; */
+  object-fit: fill;
+  /* height: 100%; */
+}
+
+/* staus bar */
+.status-bar {
+  font: "sfpro";
+  letter-spacing: 0.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #33333380;
+  color: #fff;
+  position: fixed;
+  top: 0rem;
+  backdrop-filter: blur(10px);
+  width: 98%;
+  height: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.status-bar .wifi,
+.status-bar .battery,
+.status-bar .date,
+.status-bar .time {
+  margin-left: 20px;
+  font-size: 13px;
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.21rem;
+}
+.status-bar .wifi img {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.status-bar .battery img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.3rem;
+  margin-right: 0.2rem;
+}
+/* 
+.status-bar .time .date {
+  font-size: 17px;
+} */
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.macbar {
+  font-family: "sfpro";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  gap: 1.5rem;
+}
+
+.macbar img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.macbar p {
+  font-size: 13px;
+  font-family: "sfpro";
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+/* src/FloatingAppBar.css */
+.floating-app-bar {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  /* background: #ffffff1a; */
+  /* background: linear-gradient(
+    90deg,
+    #acfd98f6 10%,
+    #37babec2 50%,
+    #73b879ce 70%,
+    #259dffde 100%
+  ); */
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  width: 20rem;
+  /* height: 50px; */
+  border-radius: 1rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* filter: blur(0.5rem); */
+}
+
+.floating-app-bar button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  margin: 0 10px;
+  /* padding: 0 10px; */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  cursor: url("/public/ef7e7351ec881269ade953411d7b04e1.png") 16 16, auto;
+
+  /* font-size: 24px; */
+}
+
+/* .floating-app-bar button img:hover {
+  transform: translateY(-0.5rem);
+} */
+
+.floating-app-bar button img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.effect {
+  position: absolute;
+  top: 0;
+  left: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  filter: blur(1rem);
+  opacity: 0.5;
+}
+
+.effect button {
+  background-color: transparent;
+  border: none;
+  scale: 1.1;
+}
+
+/* src/Terminal.css */
+.terminal {
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #1e1e1e67;
+  color: #d4d4d4;
+  font-family: monospace;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  background-color: #33333369;
+  color: #d4d4d4;
+  padding: 5px;
+  padding-left: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.header button {
+  background: none;
+  border: none;
+  color: #d4d4d4;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.body {
+  padding: 10px;
+  height: calc(100% - 30px);
+  overflow: auto;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: red;
+}
+
+a {
+  text-decoration: none;
+  color: #d4d4d4;
+}
