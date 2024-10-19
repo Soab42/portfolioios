@@ -8,6 +8,7 @@ export default function Layout({ children }) {
     "/wallpaperflare.com_wallpaper (2).jpg"
   );
   const [isSetting, setIsSetting] = useState(false);
+
   return (
     <div className="main">
       <StatusBar />
@@ -80,7 +81,7 @@ function BackgroundSelector({ setCurrentBg, currentBg, isSetting }) {
       <style jsx>{`
         .bg-selector {
           position: absolute;
-          transform: translateX(${!isSetting ? "110%" : "0"}) translateY(10px);
+          transform: translateX(${!isSetting ? "110%" : "0%"}) translateY(10px);
           top: 5rem;
           right: 10px;
           z-index: 1000;

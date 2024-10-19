@@ -1,10 +1,10 @@
 @font-face {
   font-family: "sfpro"; /*a name to be used later*/
-  src: url("../../../../public/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF"); /*URL to font*/
+  src: url("/sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.OTF"); /*URL to font*/
 }
 /* cursor image */
 body {
-  cursor: url("/public/a0d5e859e5f2b01dbbf81dfc38a3a92f.png") 16 16, auto;
+  cursor: url("/a0d5e859e5f2b01dbbf81dfc38a3a92f.png") 16 16, auto;
 }
 .mac-img {
   display: flex;
@@ -198,7 +198,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
 
 .header button {
   background: none;

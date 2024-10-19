@@ -1,9 +1,9 @@
 import { useState } from "react";
 const iconList = [
   "/SequoiadockIcons/Finder.png",
-  "/SequoiadockIcons/Chrome.png",
+  "/SequoiadockIcons/chrome.png",
   "/SequoiadockIcons/Slack.png",
-  "/SequoiadockIcons/VSCode.png",
+  "/SequoiadockIcons/vscode.png",
   "/SequoiadockIcons/Settings.png",
 ];
 const MacDoc = ({ setIsSetting, isSetting }) => {
@@ -21,15 +21,15 @@ const MacDoc = ({ setIsSetting, isSetting }) => {
   const handleClick = (index) => {
     setActiveIndex(index);
     const icon = iconList[index]
-      .split("/")[1]
+      .split("/")[2]
       .split(".")[0]
       .toLocaleLowerCase();
-    if (icon === "settings") {
+
+    if (icon == "settings") {
       setIsSetting(true);
     } else {
       setIsSetting(false);
     }
-    console.log(icon);
   };
   return (
     <div className="floating-app-bar">
