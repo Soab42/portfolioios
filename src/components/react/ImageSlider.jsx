@@ -28,7 +28,11 @@ export default function ImageSlider() {
 
   return (
     <div className="about-image">
-      <img src={images[currentImageIndex]} alt="about" />
+      <img
+        src={images[currentImageIndex]}
+        alt="about"
+        key={currentImageIndex}
+      />
       <style jsx>{`
         .about-image {
           position: absolute;
@@ -36,17 +40,27 @@ export default function ImageSlider() {
           z-index: -1;
           width: 10rem;
           height: 10rem;
-          opacity: 0.7;
+          opacity: 0.5;
           object-fit: cover;
-          border-radius: 50%;
+
           transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-          animation: left 1s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .about-image img {
           object-fit: cover;
-          border-radius: 50%;
-          animation: left 1s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+
+          animation: top 1s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+          // animation: left 1s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        @keyframes top {
+          from {
+            opacity: 0;
+            transform: translateY(-1rem);
+          }
+          to {
+            opacity: 0.5;
+            transform: translateY(0);
+          }
         }
       `}</style>
     </div>

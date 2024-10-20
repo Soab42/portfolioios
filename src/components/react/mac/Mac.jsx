@@ -3,13 +3,36 @@ import "./mac.css";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Window from "./Window";
+import CustomContextMenu from "./ContextMenu";
 
 export default function Mac({ children, currentBg }) {
   const pathname = useLocation();
+  const [menuPosition, setMenuPosition] = useState(null);
+
+  const handleRightClick = (event) => {
+    event.preventDefault();
+    setMenuPosition({
+      x: event.pageX,
+      y: event.pageY,
+    });
+  };
+
+  const handleClickOutside = () => {
+    setMenuPosition(null);
+  };
   return (
-    <div className="mac-container">
+    <div
+      className="mac-container"
+      onContextMenu={handleRightClick}
+      onClick={handleClickOutside}
+    >
+      {" "}
       <div className="mac-img">
         <img src={currentBg} alt="mac" />
+        <CustomContextMenu
+          menuPosition={menuPosition}
+          setMenuPosition={setMenuPosition}
+        />
       </div>
       {pathname.pathname.includes("/mac/projects/") ||
       pathname.pathname === "/" ? (

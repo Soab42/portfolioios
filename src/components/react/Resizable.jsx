@@ -56,7 +56,7 @@ const ResizableComponent = ({
       style={{
         width: size.width,
         height: size.height,
-        backdropFilter: "blur(20px)",
+
         position: "relative",
         top: "0",
         left: "0",
@@ -111,7 +111,9 @@ const ResizableComponent = ({
           width: "100%",
           height: "100%",
           overflow: "auto",
-          backdropFilter: "blur(20px)",
+          position: "relative",
+          backgroundColor: "rgba(0, 0, 0, 0.4)",
+          backdropFilter: "blur(10px)",
         }}
       >
         {children}

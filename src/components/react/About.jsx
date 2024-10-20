@@ -1,6 +1,7 @@
 import React from "react";
 import ImageSlider from "./ImageSlider";
 import TypingEffect from "./project/TypingEffect";
+import CircularTextAndImage from "./mac/CIrculerAbout";
 
 export default function About() {
   return (
@@ -8,7 +9,7 @@ export default function About() {
       {/* <h1 className="title">Details Of Mine</h1> */}
       <div className="content">
         <ImageSlider />
-
+        <CircularTextAndImage />
         <div className="about-text">
           <p
             style={{
@@ -37,13 +38,14 @@ export default function About() {
           </p>
         </div>
       </div>
+
       <style jsx>{`
         .content {
           display: flex;
           align-items: center;
           justify-content: center;
           margin-top: 20px;
-          color: black;
+          color: white;
           padding-inline: 15rem;
         }
       `}</style>
