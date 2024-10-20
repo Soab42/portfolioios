@@ -21,7 +21,7 @@ const CustomContextMenu = ({ menuPosition, setMenuPosition }) => {
             position: "absolute",
             top: menuPosition.y,
             left: menuPosition.x,
-            backgroundColor: "#fff",
+            backdropFilter: "blur(10px)",
             border: "1px solid #ccc",
             boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
             listStyle: "none",

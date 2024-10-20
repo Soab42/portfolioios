@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LinkList from "./LinkList";
+import { useLocation } from "react-router-dom";
+import { useRouteContext } from "../../../contexts/RoutingContext";
 const StatusBar = () => {
   const [batteryLevel, setBatteryLevel] = useState(100);
   const [isCharging, setIsCharging] = useState(false);
   const [wifiStatus, setWifiStatus] = useState("Connected");
   const [time, setTime] = useState(new Date());
-
+  const { value, setValue } = useRouteContext();
   useEffect(() => {
     // Update time every second
     const timerId = setInterval(() => setTime(new Date()), 1000);
-    console.log(navigator);
+
     // Get battery status
     if (navigator.getBattery) {
       navigator.getBattery().then((battery) => {
@@ -36,6 +38,15 @@ const StatusBar = () => {
     return () => clearInterval(timerId);
   }, []);
 
+  const pathname = useLocation();
+
+  useEffect(() => {
+    setValue((prev) => ({
+      ...prev, // Spread the previous state
+      currentPath: pathname.pathname, // Update the currentPath
+      prevPath: prev.currentPath, // Set prevPath to the previous currentPath
+    }));
+  }, [pathname]);
   const formatTime = (date) => {
     let hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");

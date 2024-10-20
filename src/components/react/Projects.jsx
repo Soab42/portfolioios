@@ -21,6 +21,7 @@ export default function Projects() {
           flexWrap: "wrap",
           gap: "20px",
           justifyContent: "center",
+          alignCItems: "center",
         }}
       >
         {projects.map((project) => (

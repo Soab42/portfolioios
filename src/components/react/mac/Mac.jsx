@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Window from "./Window";
 import CustomContextMenu from "./ContextMenu";
+import { useRouteContext } from "../../../contexts/RoutingContext";
 
-export default function Mac({ children, currentBg }) {
+export default function Mac({ children }) {
   const pathname = useLocation();
   const [menuPosition, setMenuPosition] = useState(null);
-
+  const { value, setValue } = useRouteContext();
   const handleRightClick = (event) => {
     event.preventDefault();
     setMenuPosition({
@@ -28,7 +29,7 @@ export default function Mac({ children, currentBg }) {
     >
       {" "}
       <div className="mac-img">
-        <img src={currentBg} alt="mac" />
+        <img src={value.currentBG} alt="mac" />
         <CustomContextMenu
           menuPosition={menuPosition}
           setMenuPosition={setMenuPosition}

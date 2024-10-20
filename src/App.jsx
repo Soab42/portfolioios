@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Layout from "./components/Layout";
 import About from "./components/react/About";
 import Blogs from "./components/react/Blogs";
 import Contact from "./components/react/Contact";
@@ -9,6 +8,7 @@ import Mac from "./components/react/mac/Mac";
 import Project from "./components/react/project/Project";
 import Projects from "./components/react/Projects";
 import Skills from "./components/react/Skills";
+import Layout from "./components/Layout";
 const App = () => (
   <BrowserRouter>
     <Layout>

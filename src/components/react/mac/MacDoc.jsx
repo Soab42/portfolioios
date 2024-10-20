@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouteContext } from "../../../contexts/RoutingContext";
 const iconList = [
   "/SequoiadockIcons/Finder.png",
   "/SequoiadockIcons/chrome.png",
@@ -6,11 +7,11 @@ const iconList = [
   "/SequoiadockIcons/vscode.png",
   "/SequoiadockIcons/Settings.png",
 ];
-const MacDoc = ({ setIsSetting, isSetting }) => {
+const MacDoc = () => {
   const [hovered, setHovered] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [iconName, setIconName] = useState(iconList[0]);
-
+  const { value, setValue } = useRouteContext();
   const handleMouseEnter = (index) => {
     setHovered(index);
   };
@@ -26,9 +27,9 @@ const MacDoc = ({ setIsSetting, isSetting }) => {
       .toLocaleLowerCase();
 
     if (icon == "settings") {
-      setIsSetting(true);
+      setValue((prev) => ({ ...prev, isSetting: true }));
     } else {
-      setIsSetting(false);
+      setValue((prev) => ({ ...prev, isSetting: false }));
     }
   };
   return (
@@ -36,7 +37,6 @@ const MacDoc = ({ setIsSetting, isSetting }) => {
       {iconList?.map((_, index) => (
         <button
           key={index}
-          title={`${getIconName(index)}`}
           onMouseEnter={() => handleMouseEnter(index)}
           onMouseLeave={handleMouseLeave}
           onClick={() => handleClick(index)}
@@ -57,6 +57,7 @@ const MacDoc = ({ setIsSetting, isSetting }) => {
             //   transition: "transform .3s ease",
             // }}
           />
+          <span className="icon-name">{getIconName(index)}</span>
           <span className={activeIndex === index ? "blink" : ""}></span>
         </button>
       ))}
@@ -70,14 +71,37 @@ const MacDoc = ({ setIsSetting, isSetting }) => {
       <style jsx>
         {`
           .blink {
-            height: 0.5rem;
-            width: 0.5rem;
+            height: 0.3rem;
+            width: 0.3rem;
             border-radius: 50%;
             background-color: white;
             position: absolute;
             bottom: -0.4rem;
             left: 1.3rem;
             animation: blink 1s infinite;
+          }
+          .icon-name {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 0.8rem;
+            color: white;
+            opacity: 0;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-size: 8px;
+            scale: 0;
+            transform: translateX(-20%);
+            background: var(--bg);
+            z-index: -1;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.2rem;
+          }
+          .icon:hover .icon-name {
+            scale: 1;
+            opacity: 1;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateX(-20%) translateY(-1.8rem);
           }
         `}
       </style>
@@ -97,6 +121,6 @@ const getScaleFactor = (index, hovered) => {
   return 1; // other buttons
 };
 const getIconName = (index) => {
-  return iconList[index].split("/")[1].split(".")[0].toLocaleLowerCase();
+  return iconList[index].split("/")[2].split(".")[0].toLocaleLowerCase();
 };
 export default MacDoc;

@@ -3,23 +3,15 @@ import MacDoc from "./react/mac/MacDoc";
 import StatusBar from "./react/mac/StatusBar";
 import Mac from "./react/mac/Mac";
 import { useState } from "react";
+import { useRouteContext } from "../contexts/RoutingContext";
 export default function Layout({ children }) {
-  const [currentBg, setCurrentBg] = useState(
-    "/wallpaperflare.com_wallpaper (2).jpg"
-  );
-  const [isSetting, setIsSetting] = useState(false);
-
   return (
     <div className="main">
       <StatusBar />
-      <Mac currentBg={currentBg}>{children}</Mac>
-      <MacDoc setIsSetting={setIsSetting} isSetting={isSetting} />
+      <Mac>{children}</Mac>
+      <MacDoc />
 
-      <BackgroundSelector
-        setCurrentBg={setCurrentBg}
-        currentBg={currentBg}
-        isSetting={isSetting}
-      />
+      <BackgroundSelector />
       <style jsx>{`
         .main {
           width: 100vw;
@@ -31,7 +23,8 @@ export default function Layout({ children }) {
     </div>
   );
 }
-function BackgroundSelector({ setCurrentBg, currentBg, isSetting }) {
+function BackgroundSelector() {
+  const { value, setValue } = useRouteContext();
   const bgImages = [
     "/wallpaperflare.com_wallpaper.jpg",
     "/wallpaperflare.com_wallpaper (1).jpg",
@@ -57,7 +50,7 @@ function BackgroundSelector({ setCurrentBg, currentBg, isSetting }) {
   ];
 
   const changeBg = (newBg) => {
-    setCurrentBg(newBg);
+    setValue((prev) => ({ ...prev, currentBG: newBg }));
   };
 
   return (
@@ -81,7 +74,8 @@ function BackgroundSelector({ setCurrentBg, currentBg, isSetting }) {
       <style jsx>{`
         .bg-selector {
           position: absolute;
-          transform: translateX(${!isSetting ? "110%" : "0%"}) translateY(10px);
+          transform: translateX(${!value.isSetting ? "110%" : "0%"})
+            translateY(10px);
           top: 5rem;
           right: 10px;
           z-index: 1000;

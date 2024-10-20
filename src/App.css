@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "sfpro"; /*a name to be used later*/
+  src: url("/sf-pro-display-cufonfonts/SFPRODISPLAYULTRALIGHTITALIC.OTF");
+}
+/* cursor image */
+
 :root {
   --bg: #244d61;
   --bg2: #2e424d;
@@ -8,21 +14,30 @@
   --shadow: #ffffff;
   --text: #ffffff;
   --text2: #eaebed;
+  --font: "sfpro";
+  --index: 0;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
 html {
   scroll-behavior: smooth;
+  cursor: url("/a0d5e859e5f2b01dbbf81dfc38a3a92f.png") 16 16, auto;
 }
-
+a,
+button,
+li,
+[role="button"],
+.clickable {
+  cursor: url("/ef7e7351ec881269ade953411d7b04e1.png") 16 16, pointer;
+}
 body {
   all: unset;
   background: var(--bg2);
   color: var(--text2);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--font);
 }
 .icon a {
   text-decoration: none;
@@ -38,8 +53,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   text-transform: lowercase;
   font-weight: 100;
   background: var(--bg2);
@@ -68,7 +81,7 @@ nav ul {
 }
 nav ul li {
   list-style: none;
-  font-family: monospace;
+  font-family: var(--font);
   font-size: 1.2rem;
   font-weight: 700;
   position: relative;
@@ -119,7 +132,52 @@ nav ul li:hover {
   rotate: 155deg;
   transform: translateY(3px) translateX(1px);
 }
+.macbar-item {
+  position: relative;
+}
+.macbar-list {
+  position: absolute;
+  top: 2.4rem;
+  backdrop-filter: blur(10px);
+  width: 15rem;
+  padding: 0.5rem 0.2rem;
+  background: #3e3d3d76;
+  border-radius: 2%;
+  z-index: 10;
+  overflow: hidden;
+}
 
+.macbar-list ul li {
+  padding: 0.5rem;
+  top: 0;
+  font-size: small;
+  font-weight: normal;
+  color: rgb(245, 239, 239);
+  font-family: var(--font);
+}
+
+.macbar-list ul li:hover {
+  background: rgba(39, 135, 252, 0.918);
+  transition: all 0.5s linear;
+  letter-spacing: 2px;
+}
+
+.macbar-list ul li:last-child {
+  border-bottom: none;
+}
+.macbar-list ul li:first-child {
+  border-bottom: 1px solid #faf4f443;
+}
+
+.macbar-list ul li:nth-child(n + 4):nth-child(-n + 6) {
+  border-bottom: 1px solid #faf4f443;
+  color: #0e2a38;
+  cursor: wait;
+}
+.macbar-list ul li:nth-child(n + 3):nth-child(-n + 5):hover {
+  background: transparent;
+  letter-spacing: inherit;
+}
 .listing {
   display: flex;
   justify-content: center;
@@ -209,7 +267,7 @@ section {
   left: -10rem;
   z-index: 0;
   overflow-x: scroll;
-  font-family: monospace;
+
   rotate: -3deg;
 }
 .topper::after {
@@ -238,7 +296,7 @@ section {
   height: 15rem;
   rotate: -5deg;
   padding-left: 30rem;
-  font-family: monospace;
+
   overflow-x: scroll;
 }
 .closingdiv .scroll {
@@ -379,10 +437,10 @@ section {
 .projectCard {
   display: flex;
   height: 9rem;
-  width: 10rem;
+  width: 12rem;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   gap: 0.5rem;
   /* justify-content: space-evenly; */
   border-radius: 1rem;
@@ -392,7 +450,7 @@ section {
 }
 
 .projectCard img {
-  width: 8rem;
+  width: 10rem;
   height: 6rem;
   object-fit: cover;
   transition: all 0.5s;
